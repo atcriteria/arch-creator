@@ -4,7 +4,9 @@ import { useState } from "react";
 const initialValues = {
     name: "",
     image: "",
+    description: "",
     type: "Axe",
+    value: "0",
 
 }
 
@@ -19,6 +21,12 @@ export default function WeaponForm(){
 
     return(
         <div className="arch-form-container">
+            <div className="weapon-rarity-selector">
+                <button>Common</button>
+                <button>Uncommon</button>
+                <button>Rare</button>
+                <button disabled>Epic</button>
+            </div>
             <form>
               <div>
                   <p>Name:</p>
@@ -26,7 +34,11 @@ export default function WeaponForm(){
               </div>
               <div>
                   <p>Image Name:</p>
-                  <input name="image" type="text" placeholder={`weapons/crafting/${(state.type).toLowerCase()}/<this-is-what-youre-changing>`}/>
+                  <input name="image" type="text" placeholder={`arch/weapons/crafting/${(state.type).toLowerCase()}/<Name-Only>.png`}/>
+              </div>
+              <div>
+                  <p>Description:</p>
+                  <input name="description" type="text" placeholder="Weapon Description" value={state.description} />
               </div>
               <div>
                   <p>Weapon Type:</p>
@@ -41,6 +53,10 @@ export default function WeaponForm(){
                       <option value="Sword">Sword</option>
                       <option value="Whip">Whip</option>
                   </select>
+              </div>
+              <div>
+                  <p>Value:</p>
+                  <input name="value" type="text" placeholder="Values" value={state.value} />
               </div>
           </form>
           <button onClick={downloadToFile}>Click to Save</button>
