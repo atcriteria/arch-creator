@@ -176,6 +176,30 @@ export default function WeaponForm(){
                       <div>
                         <input type="checkbox" id="whip" name="bonus-skills" value="whip" onChange={handleBonusSkills} /><label htmlFor="whip">whip</label>
                       </div>
+                      <div>
+                        <input type="checkbox" id="air" name="bonus-skills" value="air" onChange={handleBonusSkills} /><label htmlFor="air">air</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" id="death" name="bonus-skills" value="death" onChange={handleBonusSkills} /><label htmlFor="death">death</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" id="earth" name="bonus-skills" value="earth" onChange={handleBonusSkills} /><label htmlFor="earth">earth</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" id="fire" name="bonus-skills" value="fire" onChange={handleBonusSkills} /><label htmlFor="fire">fire</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" id="life" name="bonus-skills" value="life" onChange={handleBonusSkills} /><label htmlFor="life">life</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" id="mind" name="bonus-skills" value="mind" onChange={handleBonusSkills} /><label htmlFor="mind">mind</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" id="spirit" name="bonus-skills" value="spirit" onChange={handleBonusSkills} /><label htmlFor="spirit">spirit</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" id="water" name="bonus-skills" value="water" onChange={handleBonusSkills} /><label htmlFor="water">water</label>
+                      </div>
                   </fieldset>
               </div>
           </form>
