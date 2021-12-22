@@ -9,6 +9,9 @@
   align-items: center;
   font-family: 'Courier New', Courier, monospace;
 }
+p {
+  margin: 5px 0;
+}
 
 header, .forms-container, footer {
   background-color: rgb(182, 182, 182);
@@ -32,7 +35,7 @@ footer {
 
 .arch-form-container {
   margin: auto;
-  width: 80%;
+  width: 100%;
   height: 80%;
   display: flex;
   flex-direction: column;
@@ -48,7 +51,10 @@ footer {
   align-items: center;
 }
 .arch-form-container form {
-  width: 80%;
+  width: 90%;
+  padding: 0 5%;
+  overflow-y: scroll;
+  scrollbar-width: thin;
 }
 .arch-form-container form div {
   text-align: right;
@@ -144,4 +150,9 @@ footer {
 .weapon-rarity-selector button:nth-child(4):disabled {
   color: white;
   background-color: purple;
+}
+
+form div p:last-child {
+  text-align: left;
+  width: 71%;
 }
