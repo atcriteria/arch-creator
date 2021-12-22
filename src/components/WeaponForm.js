@@ -17,7 +17,7 @@ const initialValues = {
 export default function WeaponForm(){
     const [state, setState] = useState(initialValues);
     const [weaponRarity, setWeaponRarity] = useState(weaponRarityParser(1));
-    const [bonusSkills, setBonusSkills] = useState({});
+    const [bonusSkills, setBonusSkills] = useState([]);
 
     const numHandsMultipliers = {
         value: (Number(state["num-hands"]) === 2) ? 1.65 : 1,
@@ -34,16 +34,29 @@ export default function WeaponForm(){
             [e.target.name]: e.target.value})
         };
         
-        const handleBonusSkills = e => {
-        if(bonusSkills[e.target.value] === 1){
-            // in state
-            let copyState = bonusSkills
-            delete copyState[e.target.value]
-            return setBonusSkills({...copyState})
+    const handleBonusSkills = e => {
+        if (bonusSkills.length === 0) {
+            let obj = {[e.target.value]: 1}
+            return setBonusSkills([obj])
         }
-        // Not in state
-        return setBonusSkills({...bonusSkills,
-            [e.target.value]: 1});
+        for (let i = 0; i < bonusSkills.length; i++){
+            if (bonusSkills[i][e.target.value]){
+                let copyArr = bonusSkills;
+                copyArr.splice(i, 1);
+                return setBonusSkills(copyArr);
+            }
+        }
+        let obj = {[e.target.value]: 1};
+        let copyArr = [...bonusSkills];
+        copyArr.push(obj)
+        return setBonusSkills(copyArr)
+    }
+
+    const updateBonusSkill = e => {
+        let copyArr = bonusSkills;
+        let ind = e.target.name;
+        copyArr[ind] = {[e.target.id]: Number(e.target.value)};
+        return setBonusSkills(copyArr)
     }
 
     const updateWeaponRarity = (e) => {
@@ -202,6 +215,18 @@ export default function WeaponForm(){
                       </div>
                   </fieldset>
               </div>
+              {
+                  bonusSkills.map((skill, ind) => {
+                      for (const [key, value] of Object.entries(skill)) {
+                          return(
+                              <div>
+                                  <p>Bonus {key}:</p>
+                                  <input id={key} name={ind} type="number" defaultValue={value} onChange={updateBonusSkill} min="1" max="5" />
+                              </div>
+                          )
+                      }
+                  })
+              }
           </form>
           <button onClick={downloadToFile}>Click to Save</button>
         </div>
