@@ -10,11 +10,19 @@ const initialValues = {
     type: "Axe",
     value: "0",
     wc: 0,
+    "num-hands": 1,
+    material: "Steel",
 }
 
 export default function WeaponForm(){
     const [state, setState] = useState(initialValues);
-    const [weaponRarity, setWeaponRarity] = useState(weaponRarityParser(1))
+    const [weaponRarity, setWeaponRarity] = useState(weaponRarityParser(1));
+
+    const numHandsMultipliers = {
+        value: (Number(state["num-hands"]) === 2) ? 1.65 : 1,
+        weight: (Number(state["num-hands"]) === 2) ? 1.8 : 1,
+        durability: (Number(state["num-hands"]) === 2) ? 1.25 : 1,
+    };
 
     const handleChange = e => {
         e.preventDefault();
@@ -72,16 +80,58 @@ export default function WeaponForm(){
                   <p>{Number(state.wc) + 10}</p>
               </div>
               <div>
+                  <p>Num Hands (1/2):</p>
+                  <input name="num-hands" type="number" defaultValue="1" onChange={handleChange} min="1" max="2" />
+              </div>
+              <div>
                   <p>Value:</p>
-                  <p>{(Math.ceil(weaponRarity.value + weaponValueParser(state.wc))).toLocaleString('en', {useGrouping: true})}</p>
+                  <p>{(Math.ceil(weaponRarity.value + weaponValueParser(state.wc)*(numHandsMultipliers.value))).toLocaleString('en', {useGrouping: true})}</p>
               </div>
               <div>
                   <p>Durability:</p>
-                  <p>{weaponRarity.durability}</p>
+                  <p>{Math.round(weaponRarity.durability*numHandsMultipliers.durability)}</p>
               </div>
               <div>
                   <p>Wight:</p>
-                  <p>{weaponRarity.weight} lbs</p>
+                  <p>{Math.round(weaponRarity.weight*numHandsMultipliers.weight)} lbs</p>
+              </div>
+              <div>
+                  <p>Material:</p>
+                  <select name="material" onChange={handleChange}>
+                      <option value="Bone">Bone</option>
+                      <option value="Brick">Brick</option>
+                      <option value="Bronze">Bronze</option>
+                      <option value="Canvas">Canvas</option>
+                      <option value="Ceramic">Ceramic</option>
+                      <option value="Cloth">Cloth</option>
+                      <option value="Concrete">Concrete</option>
+                      <option value="Diamond">Diamond</option>
+                      <option value="Earth">Earth</option>
+                      <option value="Fire">Fire</option>
+                      <option value="Glass">Glass</option>
+                      <option value="Gold">Gold</option>
+                      <option value="Ice">Ice</option>
+                      <option value="Iron">Iron</option>
+                      <option value="Leather">Leather</option>
+                      <option value="Light">Light</option>
+                      <option value="Metal">Metal</option>
+                      <option value="Mithril">Mithril</option>
+                      <option value="Oil">Oil</option>
+                      <option value="Organic">Organic</option>
+                      <option value="Orichalcum">Orichalcum</option>
+                      <option value="Paper">Paper</option>
+                      <option value="Phase">Phase</option>
+                      <option value="Plastic">Plastic</option>
+                      <option value="Rope">Rope</option>
+                      <option value="Rubber">Rubber</option>
+                      <option value="Silver">Silver</option>
+                      <option value="Soil">Soil</option>
+                      <option selected value="Steel">Steel</option>
+                      <option value="Stone">Stone</option>
+                      <option value="Water">Water</option>
+                      <option value="Wax">Wax</option>
+                      <option value="Wood">Wood</option>
+                  </select>
               </div>
           </form>
           <button onClick={downloadToFile}>Click to Save</button>
