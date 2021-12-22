@@ -13,14 +13,23 @@
     <header>
         Arch File Creator
     </header>
-    <section id="app-container">
-        <textarea id="test-content">This is some test data</textarea>
-        <button onclick="downloadToFile();">Click to Save</button>
+    <section>
+        <form>
+            <div>
+                <p>Name:</p>
+                <input name="name" type="text" placeholder="name" />
+            </div>
+            <div>
+                <p>Image Path:</p>
+                <input name="image-path" type="text" placeholder="format/like/this.png" </form>
+            </div>
+            <button onclick="downloadToFile();">Click to Save</button>
     </section>
     <footer>
         coded and designed by Dyana
     </footer>
 </body>
 <script src="index.js"></script>
+<script src="formatArchFile.js"></script>
 
 </html>

@@ -2,6 +2,7 @@
 
 const downloadToFile = () => {
     console.log("called save")
+    formatArchFile();
     // const container = document.getElementById('test-content');
     const container = document.querySelector("textarea");
     const content = container.value;

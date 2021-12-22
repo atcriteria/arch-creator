@@ -28,3 +28,25 @@ section {
 footer {
     height: 8vh;
 }
+
+section form, section form div {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+section form {
+    width: 80%;
+}
+section form div {
+    text-align: right;
+    width: 100%;
+    flex-direction: row;
+}
+section form input {
+    width: 75%;
+}
+section form p {
+    width: 20%;
+}
