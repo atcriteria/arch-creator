@@ -17,6 +17,7 @@ const initialValues = {
 export default function WeaponForm(){
     const [state, setState] = useState(initialValues);
     const [weaponRarity, setWeaponRarity] = useState(weaponRarityParser(1));
+    const [bonusSkills, setBonusSkills] = useState({});
 
     const numHandsMultipliers = {
         value: (Number(state["num-hands"]) === 2) ? 1.65 : 1,
@@ -24,11 +25,26 @@ export default function WeaponForm(){
         durability: (Number(state["num-hands"]) === 2) ? 1.25 : 1,
     };
 
+    console.log(state)
+    console.log(bonusSkills)
+
     const handleChange = e => {
         e.preventDefault();
         return setState({...state,
-        [e.target.name]: e.target.value})
-    };
+            [e.target.name]: e.target.value})
+        };
+        
+        const handleBonusSkills = e => {
+        if(bonusSkills[e.target.value] === 1){
+            // in state
+            let copyState = bonusSkills
+            delete copyState[e.target.value]
+            return setBonusSkills({...copyState})
+        }
+        // Not in state
+        return setBonusSkills({...bonusSkills,
+            [e.target.value]: 1});
+    }
 
     const updateWeaponRarity = (e) => {
         e.preventDefault();
@@ -132,6 +148,35 @@ export default function WeaponForm(){
                       <option value="Wax">Wax</option>
                       <option value="Wood">Wood</option>
                   </select>
+              </div>
+              <div>
+                  <p>Bonus Skills:</p>
+                  <fieldset className="bonus-skills-section">
+                      <div>
+                        <input type="checkbox" id="axe" name="bonus-skills" value="axe" onChange={handleBonusSkills} /><label htmlFor="axe">axe</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" id="blade" name="bonus-skills" value="blade" onChange={handleBonusSkills} /><label htmlFor="blade">blade</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" id="bow" name="bonus-skills" value="bow" onChange={handleBonusSkills} /><label htmlFor="bow">bow</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" id="club" name="bonus-skills" value="club" onChange={handleBonusSkills} /><label htmlFor="club">club</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" id="polearm" name="bonus-skills" value="polearm" onChange={handleBonusSkills} /><label htmlFor="polearm">polearm</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" id="sword" name="bonus-skills" value="sword" onChange={handleBonusSkills} /><label htmlFor="sword">sword</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" id="staff" name="bonus-skills" value="staff" onChange={handleBonusSkills} /><label htmlFor="staff">staff</label>
+                      </div>
+                      <div>
+                        <input type="checkbox" id="whip" name="bonus-skills" value="whip" onChange={handleBonusSkills} /><label htmlFor="whip">whip</label>
+                      </div>
+                  </fieldset>
               </div>
           </form>
           <button onClick={downloadToFile}>Click to Save</button>

@@ -156,3 +156,24 @@ form div p:last-child {
   text-align: left;
   width: 71%;
 }
+
+form div .bonus-skills-section {
+  width: 71%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+form div .bonus-skills-section input {
+  margin: 0;
+  width: 30%;
+}
+form div .bonus-skills-section label {
+  width: 70%;
+  text-align: left;
+}
+form div .bonus-skills-section div {
+  width: 25%;
+  font-size: .8rem;
+}
