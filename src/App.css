@@ -56,10 +56,10 @@ footer {
   flex-direction: row;
 }
 .arch-form-container form input, .arch-form-container form select {
-  width: 75%;
+  width: 70%;
 }
 .arch-form-container form p {
-  width: 20%;
+  width: 25%;
 }
 
 .form-selector-section {
