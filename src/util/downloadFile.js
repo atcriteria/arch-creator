@@ -1,11 +1,11 @@
 // The Arch Creator code
 
+import formatArchFile from "./formatArchFile";
+
 const downloadToFile = () => {
     console.log("called save")
     formatArchFile();
-    // const container = document.getElementById('test-content');
-    const container = document.querySelector("textarea");
-    const content = container.value;
+    const content = "You will have to change me"
     const filename = "test.txt";
     const contentType = "text/plain";
     const a = document.createElement('a');
@@ -17,3 +17,5 @@ const downloadToFile = () => {
 
     URL.revokeObjectURL(a.href);
 }
+
+export default downloadToFile;

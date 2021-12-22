@@ -1,0 +1,52 @@
+.App {
+  margin: auto;
+  background-color: rgb(233, 233, 233);
+  width: 40%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+header, section, footer {
+  background-color: rgb(182, 182, 182);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+header {
+  font-size: 2.8rem;
+  height: 15vh;
+}
+section {
+  height: 70vh;
+}
+footer {
+  height: 8vh;
+}
+
+section form, section form div {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+section form {
+  width: 80%;
+}
+section form div {
+  text-align: right;
+  width: 100%;
+  flex-direction: row;
+}
+section form input, section form select {
+  width: 75%;
+}
+section form p {
+  width: 20%;
+}

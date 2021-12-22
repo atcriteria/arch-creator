@@ -5,3 +5,5 @@ const formatArchFile= () => {
     const formattedArchFile = "";
     return formattedArchFile;
 }
+
+export default formatArchFile;
