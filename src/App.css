@@ -10,7 +10,7 @@
   font-family: 'Courier New', Courier, monospace;
 }
 
-header, section, footer {
+header, .forms-container, footer {
   background-color: rgb(182, 182, 182);
   width: 100%;
   display: flex;
@@ -22,31 +22,50 @@ header {
   font-size: 2.8rem;
   height: 15vh;
 }
-section {
+.forms-container {
+  flex-direction: column;
   height: 70vh;
 }
 footer {
   height: 8vh;
 }
 
-section form, section form div {
+.arch-form-container {
+  margin: auto;
+  width: 80%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arch-form-container form, .arch-form-container form div {
   margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
-section form {
+.arch-form-container form {
   width: 80%;
 }
-section form div {
+.arch-form-container form div {
   text-align: right;
   width: 100%;
   flex-direction: row;
 }
-section form input, section form select {
+.arch-form-container form input, .arch-form-container form select {
   width: 75%;
 }
-section form p {
+.arch-form-container form p {
   width: 20%;
+}
+
+.form-selector-section {
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }

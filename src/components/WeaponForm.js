@@ -2,7 +2,7 @@ import downloadToFile from "../util/downloadFile"
 
 export default function WeaponForm(){
     return(
-        <section>
+        <div className="arch-form-container">
             <form>
               <div>
                   <p>Name:</p>
@@ -28,6 +28,6 @@ export default function WeaponForm(){
               </div>
           </form>
           <button onClick={downloadToFile}>Click to Save</button>
-        </section>
+        </div>
     )
 }
