@@ -14,8 +14,8 @@ export default function Forms(){
     return(
         <section className="forms-container">
             <div className="form-selector-section">
-                <button disabled={!formType} onClick={toggleForms} >Weapon</button>
-                <button disabled={formType} onClick={toggleForms} >Armor</button>
+                <button className="selector-button" disabled={formType} onClick={toggleForms} >Weapon</button>
+                <button className="selector-button" disabled={!formType} onClick={toggleForms} >Armor</button>
             </div>
             {
                 (formType) ? <WeaponForm /> : <ArmorForm />
