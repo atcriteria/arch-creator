@@ -25,9 +25,6 @@ export default function WeaponForm(){
         durability: (Number(state["num-hands"]) === 2) ? 1.25 : 1,
     };
 
-    console.log(state)
-    console.log(bonusSkills)
-
     const handleChange = e => {
         e.preventDefault();
         return setState({...state,
@@ -62,7 +59,9 @@ export default function WeaponForm(){
     const updateWeaponRarity = (e) => {
         e.preventDefault();
         let rarity = weaponRarityParser(Number(e.target.name));
-        return setWeaponRarity(rarity)
+        setState({...state,
+        wc: rarity.rarity*10});
+        return setWeaponRarity(rarity);
     }
 
     return(
@@ -101,8 +100,9 @@ export default function WeaponForm(){
                   </select>
               </div>
               <div>
-                  <p>WC:</p>
-                  <input name="wc" type="number" defaultValue={state.wc} onChange={handleChange} min="0" />
+                  <p>WC: ({weaponRarity.rarity*10})</p>
+                  {/* <input name="wc" type="number" defaultValue={state.wc} onChange={handleChange} min="0" /> */}
+                  <p>{state.wc}</p>
               </div>
               <div>
                   <p>Max WC:</p>
@@ -225,8 +225,41 @@ export default function WeaponForm(){
                               </div>
                           )
                       }
+                      return "";
                   })
               }
+              <div>
+                  <p>Booleans:</p>
+                  <fieldset className="bonus-skills-section">
+                    <div>
+                        <input type="checkbox" id="no-damage" name="booleans" value="no-damage" onChange={handleBonusSkills} /><label htmlFor="no-damage">no-damage</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="no-steal" name="booleans" value="no-steal" onChange={handleBonusSkills} /><label htmlFor="no-steal">no-steal</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="no-enchant" name="booleans" value="no-enchant" onChange={handleBonusSkills} /><label htmlFor="no-enchant">no-enchant</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="single-wear" name="booleans" value="single-wear" onChange={handleBonusSkills} /><label htmlFor="single-wear">single-wear</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="no-give" name="booleans" value="no-give" onChange={handleBonusSkills} /><label htmlFor="no-give">no-enchant</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="refresh-stats" name="booleans" value="refresh-stats" onChange={handleBonusSkills} /><label htmlFor="refresh-stats">refresh-stats</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="no-offer" name="booleans" value="no-offer" onChange={handleBonusSkills} /><label htmlFor="no-offer">no-offer</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="no-sell" name="booleans" value="no-sell" onChange={handleBonusSkills} /><label htmlFor="no-sell">no-sell</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="bind-on-equip" name="booleans" value="bind-on-equip" onChange={handleBonusSkills} /><label htmlFor="bind-on-equip">bind-on-equip</label>
+                    </div>
+                  </fieldset>
+              </div>
           </form>
           <button onClick={downloadToFile}>Click to Save</button>
         </div>
